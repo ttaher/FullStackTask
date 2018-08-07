@@ -1,0 +1,13 @@
+﻿@{
+	ViewBag.Title = "Current stock levels";
+}
+
+<h2>Current stocks</h2>
+<div id="stocks"></div>
+
+@section Scripts
+{
+	<script>
+		stocksModule.init($("#stocks"));
+	</script>
+}

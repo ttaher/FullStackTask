@@ -1,0 +1,231 @@
+﻿body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+	max-width: 280px;
+}
+
+.close {
+	display: none !important;
+}
+
+.newclose {
+	float: right;
+	height: 30px;
+	width: 30px;
+	border: 0px;
+	background-color: #fff;
+	padding: 7px;
+	background-image: url('../../Content/icons/cross.png');
+	background-repeat: no-repeat;
+	background-origin: content-box
+}
+
+.btn-minus {
+	height: 30px;
+	width: 30px;
+	margin-right: 10px;
+	margin-left: 10px;
+	border: 0px;
+	padding: 7px;
+	background-image: url('../../Content/icons/minus.png');
+	background-repeat: no-repeat;
+	background-origin: content-box;
+	float: left
+}
+
+.btn-plus {
+	height: 30px;
+	width: 30px;
+	margin-right: 10px;
+	margin-left: 10px;
+	border: 0px;
+	padding: 7px;
+	background-image: url('../../Content/icons/plus.png');
+	background-repeat: no-repeat;
+	background-origin: content-box;
+	float: left
+}
+
+.itemprice {
+	width: 90px;
+	float: left;
+	text-align: right;
+	margin-top: 10px;
+}
+
+.itemdesc {
+	height: 30px;
+	float: right;
+	text-align: left;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.itemcount {
+	height: 30px;
+	width: 40px;
+	float: left;
+	display: block;
+	text-align: center;
+}
+
+.maincontent {
+	margin-top: 40px;
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-bottom: 40px
+}
+
+.maincontentheader {
+	margin-bottom: 40px;
+	height: 30px;
+}
+
+.maincontentfooter {
+	margin-top: 40px;
+	height: 30px;
+	margin-bottom: 60px;
+}
+.spanTotal {
+	float: left;
+	font-size: 18pt;
+	font-weight: bold;
+}
+.totalcost {
+	float: right;
+	font-weight: bold;
+}
+.buy {
+	width: 100px;
+	height: 40px;
+	background-color: rgba(42, 119, 180, 1);
+	color: white;
+}
+.buttonscontainer {
+	height: 30px;
+	margin-bottom: 60px;
+	float: right;
+	font-weight: bold;
+}
+.plusminusdiv {
+	float: right;
+	align-items: flex-start
+}
+
+.cancel {
+	width: 100px;
+	height: 40px;
+	background-color: lightgray;
+	color: black;
+	padding-left: 10px
+}
+
+.item-image {
+	max-height: 60px;
+	max-width: 60px;
+	min-height: 60px;
+	min-width: 60px;
+	height: 60px;
+	width: 60px;
+	padding-right: 10px
+}
+
+.item-conatiner {
+	float: left;
+	padding-right: 130px;
+}
+
+.mainitemcontainer {
+	margin-bottom: 20px;
+	overflow: auto
+}
+
+.spanOrder {
+	float: left;
+	font-size: 24pt;
+}
+
+@media screen and (max-width: 500px) {
+	.item-image {
+		visibility: hidden;
+		display: none;
+	}
+
+	.itemdesc {
+		height: 30px;
+		float: right;
+		text-align: left;
+		padding-top: 6px;
+		padding-bottom: 15px;
+		flex-wrap: wrap;
+		width: 90px;
+		white-space:;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.item-conatiner {
+		float: left;
+		padding-right: 96px;
+	}
+
+	.mainitemcontainer {
+		margin-bottom: 20px;
+		overflow: auto;
+		padding-top: 1px;
+	}
+
+	.itemcount {
+		height: 30px;
+		width: 40px;
+		float: left;
+		display: block;
+		text-align: center;
+		margin-top: 1px;
+	}
+
+	.itemprice {
+		width: 90px;
+		float: left;
+		text-align: right;
+		margin-top: 6px;
+	}
+	.maincontentfooter {
+		margin-top: 40px;
+		height: 30px;
+		margin-bottom: 60px;
+	}
+	.cancel {
+		width: 114px;
+		height: 40px;
+		background-color: lightgray;
+		color: black;
+		margin-left:10px
+		}
+
+	.buy {
+		width: 105px;
+		height: 40px;
+		background-color: rgba(42, 119, 180, 1);
+		color: white;
+	}
+}

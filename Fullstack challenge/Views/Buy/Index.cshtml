@@ -1,0 +1,170 @@
+﻿@model List<Fullstack.Challenge.Models.Stock>
+@{
+	ViewBag.Title = "Home Page";
+	Layout = "";
+}
+@using Fullstack.Challenge.Helpers
+
+<div class="maincontent">
+	<div class="maincontentheader">
+		<span class="spanOrder">Order</span>
+		<button class="newclose"></button>
+	</div>
+	<div id="items">
+		@foreach (var item in Model)
+		{
+			<div class="mainitemcontainer">
+				<div class="item-conatiner">
+					<img class="item-image" src="~/Content/images/@item.img" />
+					<div class="itemdesc">
+						@item.ItemName
+					</div>
+				</div>
+				<div class="plusminusdiv">
+					<button class="btn-minus" itemid="@item.Id"> </button>
+					<input id="quantity_@item.Id" itemid="@item.Id" type="text" class="itemcount" max="@item.Quantity" min="@item.min" value="@item.min" price="@item.Price" />
+					<button class="btn-plus" itemid="@item.Id"></button>
+					<div class="itemprice">
+						@item.Price gold
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	<div class="maincontentfooter"> 
+		<span class="spanTotal">Total</span>
+		<div class="totalcost">
+			<span id="totalcost" userbalance="@Html.Balance()"></span> gold
+		</div>
+	</div>
+	<div class="buttonscontainer">
+		<button id="buy" class="buy">Buy</button>
+		<button id="cancel" class="cancel">Cancel</button>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		buyModule.init()
+	})
+</script>
+
+@*<script>
+	$(document).ready(function () {
+
+			var totlacost = 0
+			$(".btn-minus").click(function () {
+
+				var ele = $(this)
+				var itemid = ele.attr("itemid")
+				var quantity = parseInt($("#quantity_" + itemid).val())
+				var newquantity = quantity -1
+				var min = parseInt($("#quantity_" + itemid).attr("min"))
+				if (newquantity <= min) {
+					$("#quantity_" + itemid).val(min)
+				} else {
+					$("#quantity_" + itemid).val(newquantity)
+				}
+				var res = updatetotalalcost()
+			})
+			$(".btn-plus").click(function () {
+				var ele = $(this)
+				var itemid = ele.attr("itemid")
+				var quantity = parseInt($("#quantity_" + itemid).val())
+				var max = parseInt($("#quantity_" + itemid).attr("max"))
+				var newquantity = quantity + 1
+				if (newquantity> max) {
+					alert("You Exceed the Quantity")
+					$("#quantity_" + itemid).val(max)
+				} else {
+					$("#quantity_" + itemid).val(newquantity)
+					if (!updatetotalalcost()) {
+						alert("You Do Not Have Enough Balance")
+						$("#quantity_" + itemid).val(quantity)
+						updatetotalalcost()
+					}
+				}
+
+			})
+			$(".itemcount").keydown(function (event) {
+				var min = parseInt($(this).attr("min"))
+				var max = parseInt($(this).attr("max"))
+				var val = parseInt($(this).val())
+				var key = event.charCode || event.keyCode || 0
+				var valid = ((
+					key == 8 ||
+					key == 9 ||
+					key == 46 ||
+					key == 110 ||
+					(key >= 37 && key <= 40) ||
+					(key >= 48 && key <= 57) ||
+					(key >= 96 && key <= 105)) && (val >= min && val <= max))
+				if (!valid) {
+					event.preventDefault()
+				}
+				if (!updatetotalalcost()) {
+					$("#quantity_" + itemid).val(0)
+				}
+			})
+			function updatetotalalcost() {
+				var res = true
+				totlacost = 0
+				var userbalance = $("#totalcost").attr("userbalance")
+				$(".itemcount").each(function () {
+					var itemid = $(this).attr('itemid')
+					var count = $('#quantity_' + itemid).val()
+					var price = $('#quantity_' + itemid).attr("price")
+					var itemcost = count * price
+					if ((totlacost + itemcost) <= parseInt(userbalance)) {
+						totlacost += (count * price)
+					} else {
+						res = false
+						return res
+					}
+				})
+				$("#totalcost").html(totlacost)
+				return res
+			}
+			function close() {
+				parent.$.facebox.close()
+			}
+			$(".newclose,.cancel").click(function () {
+				close()
+			})
+			$(".buy").click(function () {
+				var itemIds = new Array()
+				var items = []
+				$(".itemcount").each(function () {
+					var itemid = $(this).attr('itemid')
+					var count = $('#quantity_' + itemid).val()
+					if (parseInt(count) > 0) {
+						var item = { id: itemid, quantity: count }
+						items.push(item)
+					}
+				})
+				debugger
+				if (items.length == 0) {
+					alert("No Items to buy")
+				} else {
+
+					var _url = '@Url.Action("Buy", "Buy")'
+					$.ajax({
+						url: _url,
+						method: 'post',
+						data: {
+							items: items,
+							totlacost: totlacost
+						}
+					}).done(function (result) {
+						debugger
+						if (result.ResultValue == true) {
+							alert(result.ResultMessage)
+							location.reload()
+							close()
+						} else {
+							alert(result.ResultMessage)
+						}
+						})
+				}
+			})
+	})
+	</script>*@

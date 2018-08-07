@@ -1,0 +1,24 @@
+﻿@{
+	ViewBag.Title = "Log in";
+}
+
+<h2>Log in</h2>
+
+<form method="post">
+	@if (TempData.ContainsKey("error"))
+	{
+		<div class="alert alert-danger" role="alert">@TempData["error"]</div>
+	}
+
+	<div class="form-group">
+		<label for="login">Login</label>
+		<input type="email" id="login" name="login" class="form-control"/>
+	</div>
+
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" class="form-control"/>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Log in</button>
+</form>
